@@ -7,16 +7,25 @@ import Navbar from "./Navbar";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  function onLogout() {
+    setIsLoggedIn(false);
+  }
+
+  function onLogin() {
+    setIsLoggedIn(true);
+  }
 
   return (
     <div>
-      <Navbar setIsLoggedIn={setIsLoggedIn} />
+      {/* <Navbar setIsLoggedIn={setIsLoggedIn} /> */}
+      <Navbar onLogout={onLogout} />
       <Switch>
         <Route exact path="/about">
           <About />
         </Route>
         <Route exact path="/login">
-          <Login setIsLoggedIn={setIsLoggedIn} />
+          <Login onLogin={onLogin} />
         </Route>
         <Route exact path="/">
           <Home isLoggedIn={isLoggedIn} />
